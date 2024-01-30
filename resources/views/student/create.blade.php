@@ -21,13 +21,19 @@
     </div>
     <div class="mb-3">
         <label for="kelas" class="form-label">Kelas</label>
-        <input type="text" class="form-control" id="kelas" name="kelas" required  value="{{ old('kelas') }}">
+        <select class="form-select" name="grades_id" id="">
+            @if(isset($grades))
+                @foreach ($grades as $grade)
+                    <option value="{{ $grade->id }}">{{ $grade->grade }}</option>
+                @endforeach
+            @endif
+        </select>
     </div>
     <div class="mb-3">
         <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control" id="alamat" name="alamat" required value="{{ old('alamat') }}">
     </div>
-    <button type="submit" class="btn btn-danger">Add</button>
+    <button type="submit" class="btn btn-danger">Tambah</button>
 </form>
 
 @endsection

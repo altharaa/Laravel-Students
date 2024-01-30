@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-
     protected $table = 'students';
     protected $guarded = [];
+
+    public function grades()
+    {
+        return $this->belongsTo(Grade::class, 'grades_id', 'id');
+    }
 }
