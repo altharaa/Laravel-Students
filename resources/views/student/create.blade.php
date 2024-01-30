@@ -33,7 +33,7 @@
         <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control" id="alamat" name="alamat" required value="{{ old('alamat') }}">
     </div>
-    <button type="submit" class="btn btn-danger">Tambah</button>
+    <button type="submit" class="btn btn-danger">Tambah+</button>
 </form>
 
 @endsection
