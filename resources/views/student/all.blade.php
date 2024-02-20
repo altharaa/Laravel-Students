@@ -3,13 +3,26 @@
 @section('content')
 <table class="table">
 <h1>Data Siswa</h1>
-<a href="/student/create"  type="button" class="btn btn-primary">Create New</a>
-<br><br/>
+
 @if (session('success'))
   <div class="alert alert-success sol-lg-12" role="alert">
     {{ session('success') }}
   </div>
 @endif
+
+<div class="row">
+  <div class="col-md-6">
+    <form action="post">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search..." name="search">
+        <button class="btn btn-primary" type="submit" id="button-addon2" >Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<a href="/student/create"  type="button" class="btn btn-primary">Create New</a>
+
 <table class="table">
   <thead>
     <tr>
