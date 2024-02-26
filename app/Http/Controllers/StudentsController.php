@@ -10,9 +10,15 @@ use Illuminate\Http\Request;
 class StudentsController extends Controller
 {
     public function index() {
+        $students = Student::latest();
+
+        if (request()->has('search')) {
+            $students->filter(request(['search']));
+        }
+
         return view('student.all', [
             "title" => "Students",
-            "students" => Student::all()
+            'students' => $students->get()
         ]);
     }
 

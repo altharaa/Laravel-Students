@@ -19,7 +19,7 @@
   </div>
 @endif
 
-<div >
+<div>
   <a href="/student/create"  type="button" class="btn btn-primary mb-10" >Create New</a>
 </div>
 
@@ -50,7 +50,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-outline-danger" 
-                        onclick="return confirm('Apakah kamu yakin untuk menghapus data?')">Delete</button> 
+                        onclick="return confirm('Are you sure you want to delete the data?')">Delete</button> 
                     </form>
                 </td>
             </tr>
