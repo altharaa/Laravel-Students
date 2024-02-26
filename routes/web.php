@@ -42,7 +42,7 @@ Route::group(["prefix" => "/student"], function(){
 });
 
 Route::group(["prefix" => "/grade"], function(){
-    Route::get("/", [GradesController::class, 'index'])->middleware('auth');
+    Route::get("/", [GradesController::class, 'index']);
     Route::get("/create", [GradesController::class, "create"])->middleware('auth');
     Route::post("/add", [GradesController::class, "store"])->middleware('auth');
     Route::delete('/destroy/{grade}', [GradesController::class, 'destroy'])->middleware('auth');
