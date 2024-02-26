@@ -1,13 +1,16 @@
 @extends('layouts.main')
 
 @section('content')
-    <a href="/student/all" type="button" class="btn btn-primary">Back</a>
-    <h3>Create Student</h3>
+    <a href="/dashboard/student" type="button" class="btn btn-primary">
+        <i class="bi bi-box-arrow-left"></i>
+        Back
+    </a>
+    <h3 style="text-align: center;">Create Student</h3>
 
     @if(session('success'))
-            <div class="alert alert-success">
+        <div class="alert alert-success">
                 {{ session('success') }}
-            </div>
+        </div>
     @endif
     
     <form action="/student/update/{{$student->id}}" method="post">
@@ -47,6 +50,6 @@
             <input type="text" class="form-control" id="alamat" value="{{$student->alamat}}" name="alamat" required>
         </div>
 
-        <button type="submit"  class="btn btn-primary">Update</button>
+        <button type="submit"  class="btn btn-danger">Update</button>
     </form>
 @endsection

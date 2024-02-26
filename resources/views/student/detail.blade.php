@@ -15,6 +15,6 @@
         </ul>
     </div>
     <br>
-    <a href="/student/all" class="btn btn-primary">Back</a>
+    <a href="/dashboard/student" class="btn btn-primary">Back</a>
 
 @endsection

@@ -15,4 +15,10 @@ class Student extends Model
     {
         return $this->belongsTo(Grade::class, 'grades_id', 'id');
     }
+
+    public function scopeFilter($query, array $filters){
+        if(isset($filters['search']) ? $filters['search'] : false){
+          return  $query->where('nama', 'like', '%' . request('search') . '%');
+        }
+    }
 }
