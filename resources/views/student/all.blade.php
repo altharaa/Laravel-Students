@@ -2,16 +2,9 @@
 
 @section('content')
 <table class="table">
-<h1>Data Siswa</h1>
-
-@if (session('success'))
-  <div class="alert alert-success sol-lg-12" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6" style="margin: auto;">
     <form action="post">
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search..." name="search">
@@ -21,16 +14,14 @@
   </div>
 </div>
 
-<a href="/student/create"  type="button" class="btn btn-primary">Create New</a>
-
 <table class="table">
   <thead>
     <tr>
         <th scope="col">No</th>
         <th scope="col">NIS</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Kelas</th>
-        <th scope="col">Aksi</th>
+        <th scope="col">Name</th>
+        <th scope="col">Grade</th>
+        <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -42,15 +33,6 @@
         <td>{{$student->grades->grade}}</td>
         <td>
             <a href="/student/detail/{{$student->id}}" type="button" class="btn btn-outline-info">Detail</a>
-            <a href="/student/edit/{{ $student->id }}" type="button" class="btn btn-outline-warning">Edit</a>
-            <form id="delete-form-{{ $student-> id }}" 
-              action="{{ url('/student/destroy', ['student' => $student->id]) }}" method="post" 
-              class="d-inline">
-              @csrf
-              @method('delete')
-              <button type="submit" class="btn btn-outline-danger" 
-                onclick="return confirm('Apakah kamu yakin untuk menghapus data?')">Delete</button> 
-            </form>
         </td>
     </tr>
     @endforeach

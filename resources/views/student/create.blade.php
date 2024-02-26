@@ -2,8 +2,11 @@
 
 @section('content')
 <div class="container">
-    <a href="/student/all" type="button" class="btn btn-primary mb-3">Back</a>
-    <h1>Add New Student Data</h1>
+    <a href="/dashboard/student" type="button" class="btn btn-primary mb-3">
+        <i class="bi bi-box-arrow-left"></i>
+        Back
+    </a>
+    <h1 style="text-align: center;">Add New Student Data</h1>
 
     <form method="post" action="/student/add">   
         @csrf
@@ -33,7 +36,7 @@
             <label for="alamat" class="form-label">Alamat</label>
             <input type="text" class="form-control" id="alamat" name="alamat" required value="{{ old('alamat') }}">
         </div>
-        <button type="submit" class="btn btn-danger">Tambah+</button>
+        <button type="submit" class="btn btn-danger">Submit</button>
     </form>
 </div>
 @endsection

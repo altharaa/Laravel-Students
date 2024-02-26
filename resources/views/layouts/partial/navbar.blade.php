@@ -21,6 +21,9 @@
                     <a class="nav-link" href="/student/all">Students</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/grade">Grade</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>

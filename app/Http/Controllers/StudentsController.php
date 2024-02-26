@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -40,16 +41,16 @@ class StudentsController extends Controller
 
         $result = Student::create($validateData);
         if($result) {
-            return redirect('/student/all')->with('success', 'New student data has been added!');
+            return redirect('/dasboard/student')->with('success', 'New student data has been added!');
         }
     }
 
     public function destroy($student) {
         $result = Student::destroy($student);   
         if($result) {
-            return redirect('/student/all')->with('success', 'Student data has been deleted!');
+            return redirect('/dashboard/student')->with('success', 'Student data has been deleted!');
         } else {
-            return redirect('/student/all')->with('error', 'Student data failed to delete!');
+            return redirect('/dashboard/student')->with('error', 'Student data failed to delete!');
         }
     }
 
@@ -78,6 +79,6 @@ class StudentsController extends Controller
             "alamat" => $request->alamat
         ]);
 
-        return redirect('/student/all')->with('success', 'Student data has been updated!');
+        return redirect('/dashboard/student')->with('success', 'Student data has been updated!');
     }
 }
