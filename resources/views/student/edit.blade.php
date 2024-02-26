@@ -5,7 +5,7 @@
         <i class="bi bi-box-arrow-left"></i>
         Back
     </a>
-    <h3 style="text-align: center;">Create Student</h3>
+    <h3 style="text-align: center;">Edit Student</h3>
 
     @if(session('success'))
         <div class="alert alert-success">

@@ -32,7 +32,7 @@ Route::get('/about', function(){
 })->middleware('auth');
 
 Route::group(["prefix" => "/student"], function(){
-    Route::get("all", [StudentsController::class, "index"]);
+    Route::get("/all", [StudentsController::class, "index"]);
     Route::get("/detail/{student}", [StudentsController::class, "show"]);
     Route::get("create", [StudentsController::class, "create"])->middleware('auth');
     Route::post("add", [StudentsController::class, "store"])->middleware('auth');
@@ -41,7 +41,14 @@ Route::group(["prefix" => "/student"], function(){
     Route::put('/update/{student}', [StudentsController::class, 'update'])->middleware('auth');
 });
 
-Route::get('/grade', [GradesController::class, 'index'])->middleware('auth');
+Route::group(["prefix" => "/grade"], function(){
+    Route::get("/", [GradesController::class, 'index'])->middleware('auth');
+    Route::get("/create", [GradesController::class, "create"])->middleware('auth');
+    Route::post("/add", [GradesController::class, "store"])->middleware('auth');
+    Route::delete('/destroy/{grade}', [GradesController::class, 'destroy'])->middleware('auth');
+    Route::get('/edit/{grade}', [GradesController::class, 'edit'])->middleware('auth');
+    Route::put('/update/{grade}', [GradesController::class, 'update'])->middleware('auth');
+});
 
 Route::get("/login", [LoginController::class, "index"])->name('login')->middleware('guest');
 Route::post("/login", [LoginController::class, "auth"]);
@@ -50,17 +57,22 @@ Route::post("/logout", [LoginController::class, "logout"]);
 Route::get("/register", [RegisterController::class, "index"])->middleware('guest');
 Route::post("/register", [RegisterController::class, "store"]);
 
-Route::get('/dashboard', function(){
-    return view('dashboard.index', [
-        "title" => "dashboard",
-    ]);
+Route::group(["prefix" => "/dashboard"], function(){
+    Route::get('/', function(){
+        return view('dashboard.index', [
+            "title" => "dashboard",
+        ]);
+    });
+    Route::get("/student", [ControllersDashboardController::class, 'index']);
+    Route::get("/grade", [ControllersDashboardController::class, "view"]);
 });
 
-Route::apiResource('/dashboard/student', ControllersDashboardController::class);
+// Route::apiResource('/dashboard/student', ControllersDashboardController::class);
 
-Route::get('/dashboard/grade', function(){
-    return view('dashboard.grade.index', [
-        "title" => "dashboard",
-        'grades' => Grade::all()
-    ]);
-});
+// Route::get('/dashboard/grade', function(){
+//     return view('dashboard.grade.index', [
+//         "title" => "dashboard",
+//         'grades' => Grade::all()
+//     ]);
+// });
+

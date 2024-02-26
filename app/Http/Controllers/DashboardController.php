@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
+use App\Models\Grade;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,16 @@ class DashboardController extends Controller
             'students' => Student::latest()->filter(request(['search']))->paginate(10)
         ]);
     }
+
+    public function view()
+    {
+        return view('dashboard.grade.index',[
+            "title" => "dashboard",
+            'grades' => Grade::all()
+        ]);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

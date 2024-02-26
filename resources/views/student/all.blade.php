@@ -5,9 +5,9 @@
 
 <div class="row">
   <div class="col-md-6" style="margin: auto;">
-    <form action="post">
+    <form action="/student/all" method="GET">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search..." name="search">
+        <input type="text" class="form-control" placeholder="Search..." name="search" aria-label="Search" value="{{request('search')}}">
         <button class="btn btn-primary" type="submit" id="button-addon2" >Search</button>
       </div>
     </form>
