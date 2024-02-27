@@ -47,7 +47,7 @@ class StudentsController extends Controller
 
         $result = Student::create($validateData);
         if($result) {
-            return redirect('/dasboard/student')->with('success', 'New student data has been added!');
+            return redirect('/dashboard/student')->with('success', 'New student data has been added!');
         }
     }
 

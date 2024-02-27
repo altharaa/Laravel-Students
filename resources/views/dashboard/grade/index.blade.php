@@ -2,7 +2,18 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"> Grades</h1>
+    <h1 class="h2"> Grade</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6" >
+    <form action="/dashboard/grade">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search..." name="search" aria-label="Search" value="{{request('search')}}">
+        <button class="btn btn-primary" type="submit" id="button-addon2" >Search</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 @if (session('success'))
@@ -22,7 +33,7 @@
 <div>
   <a href="/grade/create"  type="button" class="btn btn-primary mb-10" >Create New</a>
 </div>
-
+<br/>
 <div class="table-responsive small">
     <table class="table table-striped table-sm">
         <thead>
@@ -36,9 +47,8 @@
             @foreach($grades as $grade)
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
-                <td>{{$grade["grade"]}}</td>
+                <td>{{$grade->grade}}</td>
                 <td>
-                    <a href="/grade/detail/{{$grade->id}}" type="button" class="btn btn-outline-info">Detail</a>
                     <a href="/grade/edit/{{ $grade->id }}" type="button" class="btn btn-outline-warning">Edit</a>
                     <form id="delete-form-{{ $grade-> id }}" 
                     action="{{ url('/grade/destroy', ['grade' => $grade->id]) }}" method="post" 
