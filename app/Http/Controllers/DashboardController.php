@@ -21,13 +21,27 @@ class DashboardController extends Controller
 
     public function view()
     {
-        return view('dashboard.grade.index',[
+        $grades = Grade::query();
+
+        if (request()->has('search') && request('search')) {
+            $grades->filter(['search' => request('search')]);
+        }
+
+        return view('dashboard.grade.index', [
             "title" => "dashboard",
-            'grades' => Grade::all()
+            'grades' => $grades->latest()->get()
         ]);
+        
+
     }
 
-
+    public function show($student) {
+        
+        return view('dashboard.student.detail', [
+            "title" => "Student Details",
+            "student" => Student::find($student)
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,10 +62,6 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Dashboard $dashboard)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -8,19 +8,21 @@
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('/dashboard/student') ? 'active' : ''}}" aria-current="page" href="/dashboard">
-                        <i class="bi bi-house-fill" style="color: black ;"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('/') ? 'active' : ''}}" aria-current="page" href="/dashboard">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 {{ Request::is('/dashboard/student') ? 'active' : ''}}" aria-current="page" href="/dashboard/student">
-                        <i class="bi bi-table" style="color: black;"></i>
                         Students
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/dashboard/grade">
-                        <i class="bi bi-table" style="color: black;"></i>
                         Grades
                     </a>
                 </li>

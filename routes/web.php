@@ -62,9 +62,12 @@ Route::group(["prefix" => "/dashboard"], function(){
         return view('dashboard.index', [
             "title" => "dashboard",
         ]);
+    })->middleware('auth');
+    Route::group(['prefix' => "/student"], function(){
+        Route::get("/", [ControllersDashboardController::class, 'index'])->middleware('auth');
+        Route::get("/detail/{student}", [ControllersDashboardController::class, "show"])->middleware('auth');
     });
-    Route::get("/student", [ControllersDashboardController::class, 'index']);
-    Route::get("/grade", [ControllersDashboardController::class, "view"]);
+    Route::get("/grade", [ControllersDashboardController::class, "view"])->middleware('auth');
 });
 
 // Route::apiResource('/dashboard/student', ControllersDashboardController::class);

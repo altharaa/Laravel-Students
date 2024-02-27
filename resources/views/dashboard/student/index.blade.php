@@ -5,6 +5,17 @@
     <h1 class="h2"> Students</h1>
 </div>
 
+<div class="row">
+  <div class="col-md-6" >
+    <form action="/dashboard/student">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search..." name="search" aria-label="Search" value="{{request('search')}}">
+        <button class="btn btn-primary" type="submit" id="button-addon2" >Search</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 @if (session('success'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{ session('success') }}
@@ -22,7 +33,7 @@
 <div>
   <a href="/student/create"  type="button" class="btn btn-primary mb-10" >Create New</a>
 </div>
-
+<br>
 <div class="table-responsive small">
     <table class="table table-striped table-sm">
         <thead>
@@ -39,10 +50,10 @@
             <tr>
                 <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$student["nis"]}}</td>
-                <td>{{$student["nama"]}}</td>
+                <td>{{$student->nama}}</td>
                 <td>{{$student->grades->grade}}</td>
                 <td>
-                    <a href="/student/detail/{{$student->id}}" type="button" class="btn btn-outline-info">Detail</a>
+                    <a href="/dashboard/student/detail/{{$student->id}}" type="button" class="btn btn-outline-info">Detail</a>
                     <a href="/student/edit/{{ $student->id }}" type="button" class="btn btn-outline-warning">Edit</a>
                     <form id="delete-form-{{ $student-> id }}" 
                     action="{{ url('/student/destroy', ['student' => $student->id]) }}" method="post" 
